@@ -12,7 +12,7 @@ commonLabels:
 
 images:
 - name: kube-shell
-  newName: whoami6443/ttyd_nossl_nonroot
+  newName: harbor.navneetv.com/whoami6443/ttyd_nossl_root
   newTag: "0.6.1"
 
 patches:
@@ -32,4 +32,4 @@ patches:
   patch: |-
     - op: replace
       path: /spec/virtualhost/fqdn
-      value: wordpress.sgrhas.io
+      value: kube-shell.env1.lab.test
