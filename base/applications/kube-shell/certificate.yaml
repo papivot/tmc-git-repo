@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ca-issuer-selfsigned
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: kube-shell-cert
+spec:
+  commonName: kube-shell.env1.lab.test
+#  commonName: kube-shell.{{ENVOY_KB_IP}}.nip.io
+  dnsNames:
+  - kube-shell.env1.lab.test
+#  - kube-shell.{{ENVOY_KB_IP}}.nip.io
+  issuerRef:
+    name: ca-issuer-selfsigned
+    kind: Issuer
+  secretName: kube-shell-tls

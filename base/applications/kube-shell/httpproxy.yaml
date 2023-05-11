@@ -1,0 +1,20 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: kube-shell
+spec:
+  virtualhost:
+    fqdn: kube-shell.env1.lab.test
+#    fqdn: kube-shell.{{ENVOY_KB_IP}}.nip.io
+    tls:
+      secretName: kube-shell-tls
+  routes:
+  - services:
+    - name: kube-shell
+      port: 80
+  - conditions:
+    - prefix: /ws
+    enableWebsockets: true
+    services:
+    - name: kube-shell
+      port: 80

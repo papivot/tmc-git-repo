@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../../../base/applications/kube-shell
+
+namespace: k8s-papivot-tools
+
+commonLabels:
+  project.name: kube-shell
+  project.app: kube-shell
+
+images:
+- name: kube-shell
+  newName: whoami6443/ttyd_nossl_nonroot
+  newTag: "0.6.1"
+
+patches:
+- target:
+    kind: Certificate
+    name: kube-shell-cert
+  patch: |-
+    - op: replace
+      path: /spec/commonName
+      value: kube-shell.env1.lab.test
+    - op: replace
+      path: /spec/dnsNames/0
+      value: kube-shell.env1.lab.test
+- target:
+    kind: HTTPProxy
+    name: kube-shell
+  patch: |-
+    - op: replace
+      path: /spec/virtualhost/fqdn
+      value: wordpress.sgrhas.io
