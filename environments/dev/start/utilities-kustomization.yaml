@@ -5,6 +5,8 @@ metadata:
   name: dev-utilities
   namespace: tanzu-continuousdelivery-resources
 spec:
+  dependsOn:
+    - name: dev-pre-reqs
   interval: 1m0s
   path: ./environments/dev/utilities
   prune: true
