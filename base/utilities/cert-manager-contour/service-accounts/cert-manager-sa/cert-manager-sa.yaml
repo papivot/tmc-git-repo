@@ -36,4 +36,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: cert-manager-packages-sa
-  namespace: packages
+  namespace: vmware-system-tkg

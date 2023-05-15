@@ -36,4 +36,4 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: contour-packages-sa
-  namespace: packages
+  namespace: vmware-system-tkg
