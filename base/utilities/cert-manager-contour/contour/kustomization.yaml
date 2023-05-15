@@ -10,7 +10,7 @@ resources:
 
 secretGenerator:
 - name: contour-packages-values
-  namespace: packages
+  namespace: vmware-system-tkg
   files:
   - contour.yaml
   type: Opaque
