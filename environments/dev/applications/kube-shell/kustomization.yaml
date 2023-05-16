@@ -1,19 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
-- ../../../../base/applications/kube-shell
+resources:
+  - ../../../../base/applications/kube-shell
+
+images:
+- name: whoami6443/ttyd_nossl_nonroot
+  newName: harbor.navneetv.com/whoami6443/ttyd_nossl_root
+  newTag: 0.6.1
 
 namespace: k8s-papivot-tools
 
 commonLabels:
   project.name: kube-shell
   project.app: kube-shell
-
-images:
-- name: kube-shell
-  newName: harbor.navneetv.com/whoami6443/ttyd_nossl_root
-  newTag: 0.6.1
 
 patches:
 - target:
