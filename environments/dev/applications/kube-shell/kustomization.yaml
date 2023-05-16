@@ -13,7 +13,7 @@ commonLabels:
 images:
 - name: kube-shell
   newName: harbor.navneetv.com/whoami6443/ttyd_nossl_root
-  newTag: "0.6.1"
+  newTag: 0.6.1
 
 patches:
 - target:
