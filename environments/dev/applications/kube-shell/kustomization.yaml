@@ -5,7 +5,7 @@ resources:
   - ../../../../base/applications/kube-shell
 
 images:
-- name: whoami6443/ttyd_nossl_nonroot
+- name: whoami6443/ttyd_nossl_root
   newName: harbor.navneetv.com/whoami6443/ttyd_nossl_root
   newTag: 0.6.1
 

@@ -19,8 +19,9 @@ spec:
       labels:
         project.app: kube-shell
     spec:
+      hostPID: true
       containers:
-      - image: whoami6443/ttyd_nossl_nonroot:0.6.1
+      - image: whoami6443/ttyd_nossl_root:0.6.1
         name: kube-shell
         env:
         - name: CLUSTER_NAME
@@ -39,20 +40,17 @@ spec:
             memory: 64Mi
         securityContext:
           readOnlyRootFilesystem: true
-          allowPrivilegeEscalation: false
-          privileged: false
-          runAsNonRoot: true
-          runAsUser: 9999
-#       volumeMounts:
-#       - mountPath: /user/kshell
-#         name: cache-volume
+          privileged: true
+        volumeMounts:
+        - mountPath: /tmp/scratch
+          name: cache-volume
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         stdin: true
         tty: true
-#      volumes:
-#      - name: cache-volume
-#        emptyDir: {}  
+      volumes:
+      - name: cache-volume
+        emptyDir: {}  
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
       securityContext: {}
