@@ -20,13 +20,13 @@ spec:
         project.app: kube-shell
     spec:
       containers:
-      - env:
+      - image: whoami6443/ttyd_nossl_nonroot:0.6.1
+        name: kube-shell
+        env:
         - name: CLUSTER_NAME
           value: kube-shell.env1.lab.test
         - name: TINI_SUBREAPER
-        image: whoami6443/ttyd_nossl_nonroot:0.6.1
         imagePullPolicy: IfNotPresent
-        name: kube-shell
         ports:
         - containerPort: 7681
           protocol: TCP
